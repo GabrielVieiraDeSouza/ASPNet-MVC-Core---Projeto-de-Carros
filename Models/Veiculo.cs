@@ -18,5 +18,7 @@ namespace Projeto_Carros.Models
         [Required(ErrorMessage = "Obrigatorio informar o ano do Modelo")]
         [Display(Name = "Ano do Modelo")]
         public int AnoModelo { get; set; }
+
+        public ICollection<Consumo> Consumos { get; set; }
     }
 }

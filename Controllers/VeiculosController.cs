@@ -107,5 +107,22 @@ namespace Projeto_Carros.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction("Index");
         }
+
+        public async Task<IActionResult> Relatorio(int? id)
+        {
+            if (id == null) return NotFound();
+
+            var veiculo = await _context.Veiculos.FindAsync(id);
+            if (veiculo == null) return NotFound();
+            var consumo = await _context.Consumos
+                .Where(c => c.Veiculo.Id == id)
+                .OrderByDescending(c => c.Valor)
+                .ToListAsync();
+            decimal? total = consumo.Sum(c => c.Valor);
+
+            ViewBag.Veiculo = veiculo;
+            ViewBag.Total = total;
+            return View(consumo);
+        }
     }
 }
