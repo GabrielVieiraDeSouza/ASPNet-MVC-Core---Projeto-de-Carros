@@ -13,7 +13,7 @@ namespace Projeto_Carros.Models
 
         [Required(ErrorMessage = "Obrigatorio informar uma senha")]
         [DataType(DataType.Password)]
-        public int Senha { get; set; }
+        public string Senha { get; set; }
 
         public Perfil Perfil { get; set; }
     }

@@ -11,5 +11,7 @@ namespace Projeto_Carros.Models
         }
         public DbSet<Veiculo> Veiculos { get; set; }
         public DbSet<Consumo> Consumos { get; set; }
+
+        public DbSet<Usuarios> Usuarios { get; set; }
     }
 }
